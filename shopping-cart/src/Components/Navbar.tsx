@@ -1,10 +1,10 @@
 import React from "react";
-import "../Sass/Navbar.scss";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { NavbarContainer } from "./styles/NavbarContainer.styled";
 
 function Navbar() {
   return (
-    <div className="navbar">
+    <NavbarContainer>
       <a href="/">
         <li>Home</li>
       </a>
@@ -12,9 +12,11 @@ function Navbar() {
         <li>Shop</li>
       </a>
       <a href="/cart">
-        <li><ShoppingCartIcon className="svg_icons"/></li>
+        <li>
+          <ShoppingCartIcon className="svg_icons" />
+        </li>
       </a>
-    </div>
+    </NavbarContainer>
   );
 }
 

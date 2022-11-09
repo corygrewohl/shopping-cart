@@ -1,13 +1,13 @@
-import Home from "./pages/Home"
-import "./Sass/Home.scss"
+import Home from "./pages/Home";
+import GlobalStyles from "./Components/styles/Global";
 
 function App() {
-
   return (
-    <div className="App">
-      <Home />
-    </div>
-  )
+      <div className="App">
+        <GlobalStyles />
+        <Home />
+      </div>
+  );
 }
 
-export default App
+export default App;
