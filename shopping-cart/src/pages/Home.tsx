@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "../Components/Navbar";
 import WelcomeImage from "../assets/home_image.png";
 import { HomeContainer } from "../Components/styles/HomeContainer.styled";
+import { CartContext } from "../Contexts/CartContext";
 
 function Home() {
+
+  const [cart, setCart] = useContext(CartContext);
+
   return (
     <HomeContainer>
       <Navbar />
       <main>
         <div className="welcome-image">
           <img src={WelcomeImage} alt="Welcome Image" />
-          <h1>Welcome!</h1>
+          <h1>Welcome! {cart}</h1>
         </div>
         <div className="about">
           <h2>Welcome!</h2>
