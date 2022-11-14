@@ -1,5 +1,7 @@
 import React, { FC, useState } from "react";
 import { Button, Input } from "@mui/material";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { addToCart } from "../redux/cartSlice";
 
 interface ItemProps {
   id: number;
@@ -11,6 +13,9 @@ interface ItemProps {
 const Item: FC<ItemProps> = ({ id, color, price, image }) => {
   const [quantity, setQuantity] = useState<number>()
 
+  const cart = useAppSelector((state) => {state.cart.cart})
+  const dispatch = useAppDispatch();
+
   const handleOnChange = (event: any) => {
     setQuantity(event.target.value)
   }
@@ -18,6 +23,7 @@ const Item: FC<ItemProps> = ({ id, color, price, image }) => {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
       console.log("id: " + id);
       console.log("quantity: " + quantity);
+      dispatch(addToCart({'id': id, 'quantity': quantity}))
   };
 
   return (
