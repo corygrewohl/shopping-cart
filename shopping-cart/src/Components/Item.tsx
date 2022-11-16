@@ -20,10 +20,13 @@ const Item: FC<ItemProps> = ({ id, color, price, image }) => {
     setQuantity(event.target.value)
   }
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = () => {
       console.log("id: " + id);
       console.log("quantity: " + quantity);
+      if(quantity == null) return;
+      if(quantity <= 0) return;
       dispatch(addToCart({'id': id, 'quantity': quantity}))
+      console.log(cart)
   };
 
   return (

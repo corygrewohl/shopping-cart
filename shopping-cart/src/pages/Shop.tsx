@@ -1,6 +1,6 @@
 import Navbar from "../Components/Navbar";
 import bricks from "../data";
-import Item from "../Components/Item";
+import Item from "../Components/Item"
 import { ShopContainer } from "../Components/styles/ShopContainer.styled";
 import { ItemsContainer } from "../Components/styles/ItemsContainer.styled";
 
@@ -13,6 +13,7 @@ function Shop() {
         {bricks.map((currentBrick) => {
           return (
             <Item
+              key={currentBrick.id}
               id={currentBrick.id}
               color={currentBrick.color}
               price={currentBrick.price}
