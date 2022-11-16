@@ -1,21 +1,22 @@
 import React from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { NavbarContainer } from "./styles/NavbarContainer.styled";
+import { Link } from 'react-router-dom'
 
 function Navbar() {
   return (
     <NavbarContainer>
-      <a href="/">
+      <Link to="/">
         <li>Home</li>
-      </a>
-      <a href="/shop">
+      </Link>
+      <Link to="/shop">
         <li>Shop</li>
-      </a>
-      <a href="/cart">
+      </Link>
+      <Link to="/cart">
         <li>
           <ShoppingCartIcon className="svg_icons" />
         </li>
-      </a>
+      </Link>
     </NavbarContainer>
   );
 }

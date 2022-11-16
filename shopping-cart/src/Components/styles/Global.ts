@@ -10,6 +10,10 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Poppins', sans-serif;
 }
 
+body {
+  background-color: whitesmoke;
+}
+
 .svg_icons {
     transform: scale(1.8);
     text-align: center;
