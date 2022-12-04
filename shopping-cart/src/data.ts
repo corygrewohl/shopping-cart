@@ -1,15 +1,15 @@
 import Beige from "./assets/beige.jpg";
-import Black from "./assets/Black.jpg";
-import Blue from "./assets/Blue.jpg";
-import Brown from "./assets/Brown.jpg";
-import Green from "./assets/Green.jpg";
-import Lime from "./assets/Lime.jpg";
-import Mustard from "./assets/Mustard.jpg";
-import Navy from "./assets/Navy.jpg";
-import Orange from "./assets/Orange.jpg";
-import Purple from "./assets/Purple.jpg";
-import Red from "./assets/Red.jpg";
-import Yellow from "./assets/Yellow.jpg";
+import Black from "./assets/black.jpg";
+import Blue from "./assets/blue.jpg";
+import Brown from "./assets/brown.jpg";
+import Green from "./assets/green.jpg";
+import Lime from "./assets/lime.jpg";
+import Mustard from "./assets/mustard.jpg";
+import Navy from "./assets/navy.jpg";
+import Orange from "./assets/orange.jpg";
+import Purple from "./assets/purple.jpg";
+import Red from "./assets/red.jpg";
+import Yellow from "./assets/yellow.jpg";
 
 const bricks = [
   {
