@@ -21,7 +21,7 @@ function Cart() {
    * Putting items from cart object into cartArray
    */
 
-  const loadIntoArray = useCallback(() => {
+  const loadIntoArray = () => {
     const tempCartArray = [];
     for (let k in cart) {
       let newK = Number(k);
@@ -31,7 +31,7 @@ function Cart() {
       });
     }
     setCartArray(tempCartArray);
-  }, [])
+  }
 
   useEffect(() => {
     loadIntoArray();
