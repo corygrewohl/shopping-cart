@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import CartItem from "../Components/CartItem";
 import Navbar from "../Components/Navbar";
 import { useAppSelector } from "../redux/hooks";
@@ -17,7 +17,11 @@ function Cart() {
   const cart = useAppSelector((state) => state.cart.cart);
   const [cartArray, setCartArray] = useState<CartArray[]>([]);
 
-  useEffect(() => {
+  /**
+   * Putting items from cart object into cartArray
+   */
+
+  const loadIntoArray = useCallback(() => {
     const tempCartArray = [];
     for (let k in cart) {
       let newK = Number(k);
@@ -27,45 +31,69 @@ function Cart() {
       });
     }
     setCartArray(tempCartArray);
-  }, []);
+  }, [])
 
+  useEffect(() => {
+    loadIntoArray();
+  }, [cart]);
+
+  /**
+   * Mapping items in cart and storing it
+   */
+  const cartMap = cartArray.map((currentItem) => {
+    return (
+      <CartItem
+        key={currentItem.id}
+        id={currentItem.id}
+        quantity={currentItem.quantity}
+        color={bricks[currentItem.id].color}
+        price={+bricks[currentItem.id].price.toFixed(2)}
+        image={bricks[currentItem.id].image}
+      />
+    );
+  });
+
+  /**
+   * Loops through cart array adding all items together
+   * @returns Total price of all items
+   */
   function calculateTotalPrice() {
     let totalPrice = 0;
-    for(let k in cartArray){
+    for (let k in cartArray) {
       totalPrice += bricks[cartArray[k].id].price * cartArray[k].quantity;
     }
-    console.log(totalPrice)
-    return +(totalPrice.toFixed(2));
+    console.log(totalPrice);
+    return +totalPrice.toFixed(2);
   }
 
+  /**
+   * Displays when checkout button is clicked
+   */
   function displayAlert() {
-    alert("Thanks for trying out my Lego shop website!")
+    alert("Thanks for trying out my Lego shop website!");
   }
 
   return (
     <CartContainer>
       <Navbar />
       <CartItemsContainer>
-        {cartArray.map((currentItem) => {
-          return (
-            <CartItem
-              key={currentItem.id}
-              id={currentItem.id}
-              quantity={currentItem.quantity}
-              color={bricks[currentItem.id].color}
-              price={+(bricks[currentItem.id].price.toFixed(2))}
-              image={bricks[currentItem.id].image}
-            />
-          );
-        })}
-      <CartTotalPrice price={calculateTotalPrice()}/>
-      <Button className="checkout-btn" variant="contained" onClick={displayAlert}>
-          Checkout
-      </Button>
+        {cartArray.length === 0 ? (
+          <h1>Oops! Looks Like your cart is empty!</h1>
+        ) : (
+          <>
+            {cartMap}
+            <CartTotalPrice price={calculateTotalPrice()} />
+            <Button
+              className="checkout-btn"
+              variant="contained"
+              onClick={displayAlert}
+            >
+              Checkout
+            </Button>
+          </>
+        )}
       </CartItemsContainer>
-      <div className="checkout-btn-container">
-        
-      </div>
+      <div className="checkout-btn-container"></div>
     </CartContainer>
   );
 }

@@ -33,7 +33,7 @@ const Item: FC<ItemProps> = ({ id, color, price, image }) => {
     <div className="item">
       <img src={image} alt={color + "brick"} />
       <p>
-        {color} <br /> {price}
+        {color} <br /> ${price}
       </p>
       Quantity: <Input type="number" value={quantity} onChange={handleOnChange}/>
       <br />

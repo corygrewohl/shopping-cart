@@ -31,6 +31,15 @@ export const CartItemsContainer = styled.div`
         p {
             font-size: 24px;
         }
+
+        Button {
+          background-color: red;
+          color: white;
+        }
+
+        Button:hover {
+          background-color: #cf1616;
+        }
     }
   }
 
