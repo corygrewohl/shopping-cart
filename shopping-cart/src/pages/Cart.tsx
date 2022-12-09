@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useCallback } from "react";
-import CartItem from "../Components/CartItem";
-import Navbar from "../Components/Navbar";
+import { useEffect, useState } from "react";
 import { useAppSelector } from "../redux/hooks";
-import bricks from "../data";
-import { CartItemsContainer } from "../Components/styles/CartItemsContainer.styled";
-import { CartContainer } from "../Components/styles/CartContainer.styled";
-import CartTotalPrice from "../Components/CartTotalPrice";
+import bricks from "../Data/data";
+
+import Navbar from "../Components/Navbar/Navbar";
+import CartItem from "../Components/CartItem/CartItem";
+import { CartItemsContainer } from "../Components/CartItem/CartItemsContainer.styled";
+import { CartContainer } from "../styles/PageStyles/CartContainer.styled";
 import { Button } from "@mui/material";
 
 interface CartArray {
@@ -20,6 +20,9 @@ function Cart() {
   /**
    * Putting items from cart object into cartArray
    */
+  useEffect(() => {
+    loadIntoArray();
+  }, [cart]);
 
   const loadIntoArray = () => {
     const tempCartArray = [];
@@ -31,11 +34,7 @@ function Cart() {
       });
     }
     setCartArray(tempCartArray);
-  }
-
-  useEffect(() => {
-    loadIntoArray();
-  }, [cart]);
+  };
 
   /**
    * Mapping items in cart and storing it
@@ -45,6 +44,7 @@ function Cart() {
       <CartItem
         key={currentItem.id}
         id={currentItem.id}
+        type={bricks[currentItem.id].type}
         quantity={currentItem.quantity}
         color={bricks[currentItem.id].color}
         price={+bricks[currentItem.id].price.toFixed(2)}
@@ -82,7 +82,9 @@ function Cart() {
         ) : (
           <>
             {cartMap}
-            <CartTotalPrice price={calculateTotalPrice()} />
+            <div className="cart-item total">
+              <h2>Total Price:</h2> <p>${calculateTotalPrice()}</p>
+            </div>
             <Button
               className="checkout-btn"
               variant="contained"

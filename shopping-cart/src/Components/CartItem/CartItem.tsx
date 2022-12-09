@@ -1,17 +1,12 @@
+import { FC } from "react";
+import { useAppDispatch } from "../../redux/hooks";
+import { removeFromCart } from "../../redux/cartSlice";
+import { CartItemProps } from '../../types'
+
 import { Button } from "@mui/material";
-import React, { FC } from "react";
-import { useAppDispatch } from "../redux/hooks";
-import { removeFromCart } from "../redux/cartSlice";
 
-interface ItemProps {
-  id: number;
-  quantity: number;
-  color: string;
-  price: number;
-  image: string;
-}
 
-const CartItem: FC<ItemProps> = ({ id, quantity, color, price, image }) => {
+const CartItem: FC<CartItemProps> = ({ id, quantity, color, price, image }) => {
   const dispatch = useAppDispatch();
 
   const handleDelete = () => {
@@ -25,7 +20,7 @@ const CartItem: FC<ItemProps> = ({ id, quantity, color, price, image }) => {
         <h2>{color} Brick</h2>
         <p>Quantity: {quantity}</p>
         <p>Price per item: {price}</p>
-        <p>Quantity Price: ${price * quantity}</p>
+        <p>Quantity Price: ${+(price * quantity).toFixed(2)}</p>
         <Button onClick={handleDelete}>Delete</Button>
       </div>
     </div>

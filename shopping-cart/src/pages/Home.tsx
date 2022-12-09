@@ -1,7 +1,6 @@
-import React from "react";
-import Navbar from "../Components/Navbar";
+import Navbar from "../Components/Navbar/Navbar";
 import WelcomeImage from "../assets/home_image.png";
-import { HomeContainer } from "../Components/styles/HomeContainer.styled";
+import { HomeContainer } from "../styles/PageStyles/HomeContainer.styled";
 
 function Home() {
   return (

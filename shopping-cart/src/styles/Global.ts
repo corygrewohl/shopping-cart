@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import ScrollButton from '../../assets/scroll_button.jpg'
+import ScrollButton from '../assets/scroll_button.jpg'
 
 const GlobalStyles = createGlobalStyle`
 * {

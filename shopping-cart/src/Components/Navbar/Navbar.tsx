@@ -1,7 +1,6 @@
-import React from "react";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { LinksContainer, NavbarContainer } from "./styles/NavbarContainer.styled";
 import { Link } from 'react-router-dom'
+import { LinksContainer, NavbarContainer } from "./NavbarContainer.styled";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 function Navbar() {
   return (

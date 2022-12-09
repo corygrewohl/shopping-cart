@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import store from "./redux/store";
+import { Provider } from "react-redux";
 import App from "./App";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
-import GlobalStyles from "./Components/styles/Global";
-import store from "./redux/store";
-import { Provider } from "react-redux";
 import Cart from "./pages/Cart";
+import GlobalStyles from "./styles/Global";
 
 const RouteSwitch = () => {
   return (
