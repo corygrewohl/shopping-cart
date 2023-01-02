@@ -159,7 +159,11 @@ function Shop() {
         </Box>
       </Drawer>
 
-      <Button onClick={() => setIsDrawerOpen(true)}>Open Drawer</Button>
+      <Button variant="contained" onClick={() => setIsDrawerOpen(true)} sx={{
+        maxWidth: '200px',
+        margin: '20px'
+      }} >Filter Products</Button>
+      {/* <Typography variant="h5" sx={{ margin: '20px'}} >Current Filters</Typography> */}
       <ItemsContainer>
         {itemsArray}
         <Pagination

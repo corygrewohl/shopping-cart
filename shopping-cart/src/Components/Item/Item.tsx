@@ -4,24 +4,27 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { addToCart } from "../../redux/cartSlice";
 import { ItemProps } from "../../types";
 
-
 const Item: FC<ItemProps> = ({ id, type, color, price, image }) => {
-  const [quantity, setQuantity] = useState<number>()
+  const [quantity, setQuantity] = useState<number>();
+  const [hasQuantity, setHasQuantity] = useState<boolean>(false);
 
-  const cart = useAppSelector((state) => {state.cart.cart})
+  const cart:any = useAppSelector((state) => {
+    state.cart.cart;
+  });
   const dispatch = useAppDispatch();
 
   const handleOnChange = (event: any) => {
-    setQuantity(event.target.value)
-  }
+    setQuantity(event.target.value);
+  };
 
   const handleClick = () => {
-      console.log("id: " + id);
-      console.log("quantity: " + quantity);
-      if(quantity == null) return;
-      if(quantity <= 0) return;
-      dispatch(addToCart({'id': id, 'quantity': quantity}))
-      console.log(cart)
+    console.log("id: " + id);
+    console.log("quantity: " + quantity);
+    if (quantity == null) return;
+    if (quantity <= 0) return;
+    dispatch(addToCart({ id: id, quantity: quantity }));
+    setHasQuantity(true)
+    console.log(cart);
   };
 
   return (
@@ -30,11 +33,18 @@ const Item: FC<ItemProps> = ({ id, type, color, price, image }) => {
       <p>
         {color + " " + type} <br /> ${price}
       </p>
-      Quantity: <Input type="number" value={quantity} onChange={handleOnChange}/>
+      Quantity:{" "}
+      <Input type="number" value={quantity} onChange={handleOnChange} />
       <br />
       <Button variant="outlined" onClick={handleClick}>
         Add to Cart
       </Button>
+      {(hasQuantity) && <p>Current Quantity: {cart}</p>}
+      {/* if(cart.id == quantity){
+        return (
+          <p>Current Quantity: {cart}</p>
+        )
+      } */}
       <br />
     </div>
   );
